@@ -2,27 +2,80 @@
   @description       : 
   @author            : ChangeMeIn@UserSettingsUnder.SFDoc
   @group             : 
-  @last modified on  : 09-28-2022
+  @last modified on  : 09-29-2022
   @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 -->
-<template> 
-    <lightning-card title="Two Way Data Binding">
-      <p class="slds-var-p-horizontal_small" >{greeting}</p>
-      <br>
-      <lightning-input type="text" class="slds-var-p-horizontal_small" label="Your Current Role :" onkeyup={changeHandler}></lightning-input>
-      <br>
-      <p class="slds-var-p-horizontal_small" >You are currently working as {role}</p>
-    </lightning-card>
+<template>
+  <!-- Data Binding Example  -->
+  <lightning-card title="Two Way Data Binding">
+    <p class="slds-var-p-horizontal_small">{greeting}</p>
     <br>
-    <lightning-card title="Tracking Properties Of an Object by using @track  ">
-      <lightning-input type="text" class="slds-var-p-horizontal_small" label="Your Country :" onkeyup={trackPropertyHandler}></lightning-input>
-      <br>
-      <p class="slds-var-p-horizontal_small" >You love your country {address.country}</p>
-    </lightning-card>
+    <lightning-input type="text" class="slds-var-p-horizontal_small" label="Your Current Role :"
+      onkeyup={changeHandler}></lightning-input>
     <br>
-    <lightning-card title="Tracking Properties Of an Object without @track  ">
-      <lightning-input type="text" class="slds-var-p-horizontal_small" label="Your Name :" onkeyup={trackChangesWithoutUsingTrack}></lightning-input>
-      <br>
-      <p class="slds-var-p-horizontal_small" >You name is {user.name}</p>
-    </lightning-card>
+    <p class="slds-var-p-horizontal_small">You are currently working as {role}</p>
+  </lightning-card>
+  <br>
+  <!-- Data Binding and Property Tracking using @track -->
+  <lightning-card title="Tracking Properties Of an Object by using @track  ">
+    <lightning-input type="text" class="slds-var-p-horizontal_small" label="Your Country :"
+      onkeyup={trackPropertyHandler}></lightning-input>
+    <br>
+    <p class="slds-var-p-horizontal_small">You love your country {address.country}</p>
+  </lightning-card>
+  <br>
+  <!-- Data Binding and Property Tracking using spread operator ( Cloning and updating the required property ) -->
+  <lightning-card title="Tracking Properties Of an Object without @track  ">
+    <lightning-input type="text" class="slds-var-p-horizontal_small" label="Your Name :"
+      onkeyup={trackChangesWithoutUsingTrack}></lightning-input>
+    <br>
+    <p class="slds-var-p-horizontal_small">You name is {user.name}</p>
+  </lightning-card>
+  <br>
+  <!-- Getters Example -->
+  <lightning-card title="Getter Implementation">
+    <p class="slds-var-p-horizontal_small">You native language is {myLanguage}</p>
+  </lightning-card>
+  <br>
+  <!-- Conditional Rendering using if:else directive -->
+  <lightning-card title="Conditional Rendering">
+    <lightning-button variant="brand" label="Brand" title="Show Message" onclick={onButtonClick}
+      class="slds-var-m-left_x-small"></lightning-button>
+    <template if:true={isVisible}>
+      <p class="slds-var-p-horizontal_small"> Wow ! You are my superstar.</p>
+    </template>
+  </lightning-card>
+  <br>
+  <!-- Template Looping -->
+  <lightning-card title="Template Looping">
+    <div class="slds-var-m-around_small">
+      <template for:each={cars} for:item="car">
+        <ul class="slds-has-dividers_around-space" key={car}>
+          <li class="slds-item">{car}</li>
+        </ul>
+      </template>
+    </div>
+  </lightning-card>
+  <br>
+  <!-- Template Iterator  -->
+  <lightning-card title="Template Iterator">
+    <div class="slds-var-m-around_small">
+      <template iterator:bike={bikes}>
+        <ul class="slds-has-dividers_around-space" key={bike.value.id}>
+          <template if:true={bike.first}>
+            <div class="slds-box slds-theme_info">
+              <strong>Bikes Detail</strong>
+            </div>
+          </template>
+          <li class="slds-item">
+            <strong>Manufacturer :</strong>  {bike.value.manufacturer}
+            <br>
+            <strong>Model :</strong> : {bike.value.model}
+            <br>
+            <strong>Power :</strong> : {bike.value.cc}
+          </li>
+        </ul>
+      </template>
+    </div>
+  </lightning-card>
 </template>

@@ -1,0 +1,28 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 09-28-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template> 
+    <lightning-card title="Two Way Data Binding">
+      <p class="slds-var-p-horizontal_small" >{greeting}</p>
+      <br>
+      <lightning-input type="text" class="slds-var-p-horizontal_small" label="Your Current Role :" onkeyup={changeHandler}></lightning-input>
+      <br>
+      <p class="slds-var-p-horizontal_small" >You are currently working as {role}</p>
+    </lightning-card>
+    <br>
+    <lightning-card title="Tracking Properties Of an Object by using @track  ">
+      <lightning-input type="text" class="slds-var-p-horizontal_small" label="Your Country :" onkeyup={trackPropertyHandler}></lightning-input>
+      <br>
+      <p class="slds-var-p-horizontal_small" >You love your country {address.country}</p>
+    </lightning-card>
+    <br>
+    <lightning-card title="Tracking Properties Of an Object without @track  ">
+      <lightning-input type="text" class="slds-var-p-horizontal_small" label="Your Name :" onkeyup={trackChangesWithoutUsingTrack}></lightning-input>
+      <br>
+      <p class="slds-var-p-horizontal_small" >You name is {user.name}</p>
+    </lightning-card>
+</template>

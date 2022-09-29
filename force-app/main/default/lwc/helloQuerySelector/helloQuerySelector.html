@@ -1,0 +1,22 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 09-30-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Query Selector">
+        <h1 class="slds-var-m-left_x-small">Wow ! You have been awesome till now.</h1>
+        <lightning-button variant="brand" label="Get Element" title="Get Element" onclick={queryElement}
+      class="slds-var-m-left_x-small"></lightning-button>
+      <template for:each={movies} for:item="movie">
+        <div class="myclass slds-var-m-around_medium" key={movie}>
+          {movie}
+        </div>
+      </template>
+      <div class="mystyle slds-var-m-around_medium" lwc:dom="manual"></div>
+      <lightning-button variant="brand" label="Get Movies" title="Get Movies" onclick={getMoviesElements}
+      class="slds-var-m-left_x-small"></lightning-button>
+    </lightning-card>
+</template>
